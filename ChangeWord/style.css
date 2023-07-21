@@ -1,0 +1,76 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+
+  --rgb: 0, 0, 0;
+  --color: #fff;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(var(--rgb));
+  color: var(--color);
+}
+
+.rolodex {
+  width: 600px;
+  position: relative;
+  overflow: hidden;
+  perspective: 1800px;
+  display: grid;
+  place-content: center;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 30%;
+    z-index: 1;
+    pointer-events: none;
+  }
+  &::before {
+    top: 0;
+    background-image: linear-gradient(
+      rgba(var(--rgb), 1) 5%,
+      rgba(var(--rgb), 0)
+    );
+  }
+  &::after {
+    bottom: 0;
+    background-image: linear-gradient(
+      rgba(var(--rgb), 0),
+      rgba(var(--rgb), 1) 95%
+    );
+  }
+
+  .ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+
+    .li {
+      line-height: 64px;
+      font-size: 32px;
+      letter-spacing: 5px;
+      text-align: center;
+      white-space: nowrap;
+      position: absolute;
+      width: 100%;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      background: rgb(var(--rgb));
+    }
+  }
+}
